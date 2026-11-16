@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popover Component</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    .page-container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .popover-anchor-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    @media (max-width: 575px) {
+      .popover-trigger-button {
+        width: fit-content;
+      }
+    }
+
+    .popover-overlay-container {
+      display: none;
+      position: absolute;
+      background: #ffffff;
+      z-index: 1000;
+      width: 320px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-top: 6px solid #b6d3e9;
+      padding: 16px;
+      max-height: 150px;
+      bottom: calc(100% + 10px);
+      top: auto;
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+    }
+
+    .popover-overlay-container.active {
+      display: flex !important;
+      flex-direction: column;
+    }
+
+    .popover-overlay-container::before {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -10px;
+      top: auto;
+      left: calc(50% - 10px);
+      right: auto;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 11px 10px 0 10px;
+      border-color: transparent;
+      border-top-color: rgba(0, 0, 0, 0.2);
+      z-index: 1002;
+    }
+
+    .popover-overlay-container::after {
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -9px;
+      top: auto;
+      left: calc(50% - 10px);
+      right: auto;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 10px 0 10px;
+      border-color: transparent;
+      border-top-color: #ffffff;
+      z-index: 1003;
+    }
+
+    .popover-text-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0;
+      gap: 20px;
+      padding-right: 27px;
+    }
+
+    .popover-header-title {
+      margin: 0;
+      font-family: "HCo Gotham", arial, sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.1;
+      color: #3a5a78;
+    }
+
+    .popover-body-text {
+      text-align: start;
+      width: 100%;
+      margin: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-family: "HCo Gotham", arial, sans-serif;
+      color: #000000;
+      font-size: 16px;
+      line-height: 1.42857;
+      font-weight: 300;
+      max-height: 60px;
+    }
+
+    .popover-body-text a {
+      font-family: "HCo Gotham Medium", sans-serif;
+      color: #2477bf;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1.2;
+      background-color: transparent;
+      font-weight: 400;
+    }
+
+    .popover-body-text a:active {
+      color: rgb(27, 89.25, 143.25);
+      text-decoration: underline;
+    }
+
+    .popover-body-text a:hover {
+      color: #2477bf;
+      text-decoration: underline;
+    }
+
+    .popover-body-text a:focus,
+    .popover-body-text a:focus-visible {
+      transition: color 0.5s, text-shadow 0.25s ease-in-out;
+      color: #2477bf;
+      text-decoration: underline;
+    }
+
+    .popover-close-button {
+      position: absolute;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1001;
+      flex-shrink: 0;
+      border-radius: 0px;
+      top: 11px;
+      right: 11px;
+      margin: 4px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .popover-close-button:focus-visible {
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .popover-close-button svg {
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="popover-anchor-wrapper">
+      <button type="button" class="popover-trigger-button" aria-expanded="false" aria-controls="popoverOverlay">
+        Open Popover
+      </button>
+
+      <div id="popoverOverlay" class="popover-overlay-container" role="dialog" aria-labelledby="popoverTitle">
+        <div class="popover-text-container">
+          <h2 id="popoverTitle" class="popover-header-title">Want To Make This Easier?</h2>
+          <div class="popover-body-text">
+            Get detailed coverage advice, ways to save, and more.Get detailed coverage advice, ways to save, and more.Get detailed coverage advice, ways to save, and more.Get detailed coverage advice, ways to save, and more.
+          </div>
+        </div>
+        <button type="button" class="popover-close-button" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" style="pointer-events: none;">
+            <path d="M0.839887 15.1602C0.955946 15.2763 1.10759 15.3331 1.25912 15.3331C1.40952 15.3331 1.56111 15.2763 1.67717 15.1602L8.00002 8.83737L14.3229 15.1602C14.4377 15.2763 14.5893 15.3331 14.7409 15.3331C14.8925 15.3331 15.0441 15.2763 15.1602 15.1602C15.3911 14.9293 15.3911 14.5539 15.1602 14.3229L8.8373 8.00008L15.1602 1.67723C15.3911 1.4463 15.3911 1.07207 15.1602 0.839848C14.928 0.609015 14.5538 0.609015 14.3229 0.839848L8.00002 7.16281L1.67717 0.839848C1.44524 0.609015 1.07082 0.609015 0.839887 0.839848C0.608954 1.07207 0.608954 1.4463 0.839887 1.67723L7.16274 8.00008L0.839887 14.3229C0.608954 14.5539 0.608954 14.9293 0.839887 15.1602Z" fill="#3a5a78"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const triggerButton = document.querySelector('.popover-trigger-button');
+      const popoverOverlay = document.querySelector('.popover-overlay-container');
+      const closeButton = document.querySelector('.popover-close-button');
+
+      triggerButton.addEventListener('click', () => {
+        const isActive = popoverOverlay.classList.toggle('active');
+        triggerButton.setAttribute('aria-expanded', isActive);
+      });
+
+      closeButton.addEventListener('click', () => {
+        popoverOverlay.classList.remove('active');
+        triggerButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

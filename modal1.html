@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.modal-container {
+    background-color: #ffffff;
+    box-sizing: border-box;
+    width: 700px;
+    position: relative;
+    margin: 40px 0px 40px 0px;
+    padding: 15px;
+    border-top: 6px solid #c8deef;
+    border-radius: 0px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 0px;
+    margin: 15px 31px 15px 15px;
+}
+
+.modal-close:focus,
+.modal-close:focus-visible {
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188ff;
+    outline-offset: 0px;
+}
+
+.modal-close svg {
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+.modal-close svg path {
+    fill: #3a5a78;
+}
+
+.modal-close:hover svg path {
+    fill: #3a5a78;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-top: 3px;
+    padding-bottom: 44.8px;
+    gap: 0px;
+}
+
+.modal-header {
+    font-family: "HCo Gotham Medium", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: #3a5a78;
+    line-height: 1.2;
+    margin: 0px 0px 12.8px 0px;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 45px;
+}
+
+.modal-body {
+    font-family: "HCo Gotham Regular", sans-serif;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #3d3d3d;
+    font-size: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: left;
+    box-sizing: border-box;
+    margin: 0px 0px 32px 0px;
+    max-height: 203px;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modal-button {
+    box-sizing: border-box;
+    display: block;
+    text-align: center;
+    user-select: none;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 0;
+    font-family: "HCo Gotham", arial, sans-serif;
+    border-radius: 0;
+    font-weight: 500;
+    min-width: 200px;
+    padding: 7px 12px 7px 12px;
+    font-size: 16px;
+    line-height: 1.42857;
+}
+
+.modal-button:disabled {
+    cursor: not-allowed;
+    box-shadow: none;
+    color: #6B6B6B;
+    background-color: #ededed;
+    border-color: #ededed;
+    opacity: 1;
+}
+
+.modal-button:focus,
+.modal-button:focus-visible {
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+}
+
+/* Primary Outlined Button */
+
+.primary-outlined {
+    color: #118654;
+    background-color: transparent;
+    border-width: 1px;
+    border-color: #118654;
+    box-shadow: inset 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.primary-outlined:hover {
+    color: #ffffff;
+    background-color: #118654;
+    border-color: #118654;
+}
+
+.primary-outlined:active {
+    color: #ffffff;
+    background-color: #118654;
+    border-color: #118654;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.primary-outlined:disabled:hover {
+    color: #6B6B6B;
+    background-color: #ededed;
+    border-color: #ededed;
+}
+
+.primary-outlined .button-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.primary-outlined {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+
+/* Link Button */
+
+.link-button {
+    color: #1570be;
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.link-button:hover {
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+.link-button:focus,
+.link-button:focus-visible {
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+}
+
+.link-button:disabled:hover {
+    color: #6B6B6B;
+    text-decoration: none;
+    cursor: not-allowed;
+}
+
+/* Secondary Solid Button */
+
+.secondary-solid {
+    color: #ffffff;
+    background-color: #3a5a78;
+    border-color: #3a5a78;
+}
+
+.secondary-solid:hover {
+    color: #ffffff;
+    background-color: #4E79A2;
+    border-color: #3a5a78;
+}
+
+.secondary-solid:active {
+    color: #ffffff;
+    background-color: #3a5a78;
+    border-color: #3a5a78;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Modal */
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .modal-container {
+        width: 600px;
+    }
+}
+
+@media (max-width: 767px) {
+    .modal-container {
+        width: 350px;
+    }
+
+    .modal-footer {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="modal-backdrop" id="modalBackdrop">
+    <div
+        class="modal-container"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalHeader"
+        aria-describedby="modalBody"
+    >
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalClose"
+            aria-label="Close modal"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 16 16"
+                fill="none"
+                style="pointer-events: none;"
+            >
+                <path
+                    d="M0.839887 15.1602C0.455946 15.2763 1.10753 15.3341 1.25912 15.3341C1.40952 15.3341 1.56111 15.2763 1.67717 15.1602L8.00002 8.83737L14.3229 15.1602C14.4377 15.2763 14.5893 15.3331 14.7409 15.3331C14.8925 15.3331 15.0441 15.2763 15.1602 15.1602C15.3915 14.9289 15.3915 14.5539 15.1602 14.3229L8.8373 8.00008L15.1602 1.67723C15.3911 1.4463 15.3911 1.07207 15.1602 0.839948C14.928 0.609015 14.5538 0.609015 14.3229 0.839948L8.00002 7.16281L1.67717 0.839948C1.44624 0.609015 1.07082 0.609015 0.839887 0.839948C0.608954 1.07207 0.608954 1.4463 0.839887 1.67723L7.16274 8.00008L0.839887 14.3229C0.608954 14.5539 0.608954 14.9289 0.839887 15.1602Z"
+                    fill="#3a5a78"
+                />
+            </svg>
+        </button>
+
+        <div class="modal-content">
+
+            <h2 class="modal-header" id="modalHeader">
+                Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?
+            </h2>
+
+            <div class="modal-body" id="modalBody">
+                Get detailed coverage advice, ways to save, and more.Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?Want To Make This Easier?
+            </div>
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="modal-button primary-outlined"
+                >
+                    <svg
+                        class="button-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 48 48"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M37.262 14.003a8.7 8.7 0 0 1 4.358 1.036 8.4 8.4 0 0 1 3.212 3.056A8.146 8.146 0 0 1 44.506 27a8.48 8.48 0 0 1-3.946 3.04l3.011 2.935-3.642 3.552 3.642 3.553L37.5 46l-3.643-3.553V29.778a8.44 8.44 0 0 1-3.402-2.852 8.15 8.15 0 0 1-1.44-4.143 8.1 8.1 0 0 1 .924-4.281 8.36 8.36 0 0 1 3.03-3.226 8.66 8.66 0 0 1 4.293-1.273m1.168 3.76a2.5 2.5 0 0 0-1.404-.136c-.47.091-.904.318-1.243.648a2.35 2.35 0 0 0-.665 1.212c-.093.46-.046.936.139 1.37.184.432.494.802.893 1.062a2.47 2.47 0 0 0 3.067-.295 2.325 2.325 0 0 0 .303-2.99 2.4 2.4 0 0 0-1.09-.871"
+                        />
+                        <path
+                            d="M16 2c5.523 0 10 4.477 10 10a10 10 0 0 1-5.686 9.023L30 29.94V42H2V29.94l19.724-8.901A10 10 0 0 1 6 12C6 6.477 10.477 2 16 2"
+                        />
+                    </svg>
+                    Launch Advisor
+                </button>
+
+                <button
+                    type="button"
+                    class="modal-button link-button"
+                >
+                    Previous
+                </button>
+
+                <button
+                    type="button"
+                    class="modal-button secondary-solid"
+                    id="modalDismiss"
+                >
+                    close
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalClose = document.getElementById("modalClose");
+    const modalDismiss = document.getElementById("modalDismiss");
+
+    function closeModal() {
+        modalBackdrop.style.display = "none";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalDismiss.addEventListener("click", closeModal);
+})();
+</script>
+
+</body>
+</html>

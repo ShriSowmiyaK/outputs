@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Button</title>
+<style>
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.radio-container legend {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #3a5a78;
+    font-family: "HCo Gotham", arial, sans-serif;
+    margin-bottom: 0px;
+    padding: 0;
+    border: none;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 18px;
+    padding-bottom: 3px;
+    color: #3a5a78;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: "HCo Gotham", arial, sans-serif;
+}
+
+.radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+    flex-shrink: 0;
+    border: 1px solid #3a5a78;
+}
+
+.radio-option input[type="radio"]:checked {
+    background-color: #3a5a78;
+    border: 2px solid #ffffff;
+    outline: 1px solid #3a5a78;
+}
+
+.radio-text {
+    color: #3a5a78;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    font-family: "HCo Gotham", arial, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<fieldset class="radio-container">
+    <legend>Choose an option</legend>
+
+    <div class="radio-group">
+        <label class="radio-option">
+            <input type="radio" name="radio-group" value="option1">
+            <span class="radio-text">option1</span>
+        </label>
+
+        <label class="radio-option">
+            <input type="radio" name="radio-group" value="option2">
+            <span class="radio-text">option 2</span>
+        </label>
+    </div>
+</fieldset>
+
+<script>
+document.querySelectorAll('input[name="radio-group"]').forEach((radio) => {
+    radio.addEventListener('change', (event) => {
+        if (event.target.checked) {
+            console.log(event.target.value);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

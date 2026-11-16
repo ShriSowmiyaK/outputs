@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legacy Theme Banner</title>
+  <style>
+    .banner-outer-wrapper {
+      width: 90%;
+      margin: 2px auto;
+      border-radius: 4px;
+      position: static;
+    }
+
+    .banner-card {
+      position: relative;
+      background-color: #eaf2fb;
+      border: 2px solid #b6b3e9;
+      border-radius: 6px;
+    }
+
+    .banner-close-btn {
+      width: 20px;
+      height: 20px;
+      padding: 0px;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      margin: 4px;
+      border-radius: 0px;
+    }
+
+    .banner-close-btn:focus-visible {
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .banner-close-btn svg path {
+      fill: #0e5ca0;
+    }
+
+    .banner-close-btn:hover svg path {
+      fill: rgb(205.75, 213.75, 221.25);
+    }
+
+    .banner-main-content {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 16px;
+      padding-right: 60px;
+    }
+
+    .banner-leading-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .banner-text-column {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1 1 auto;
+      min-width: 768px;
+    }
+
+    .banner-heading {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0;
+      font-family: 'HCo Gotham Medium';
+      color: #0e5ca0;
+    }
+
+    .banner-body {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 19.6px;
+      margin: 0;
+      font-family: 'HCo Gotham Regular', sans-serif;
+      color: #212529;
+    }
+
+    .banner-action-container {
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .btn-primary-legacy {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      user-select: none;
+      border: 1px solid #118654;
+      cursor: pointer;
+      margin: 0;
+      font-family: "HCo Gotham", arial, sans-serif;
+      border-radius: 0;
+      font-weight: 500;
+      min-width: 200px;
+      padding: 7px 12px 7px 12px;
+      font-size: 16px;
+      line-height: 1.42857;
+      color: #ffffff;
+      background-color: #118654;
+    }
+
+    .btn-primary-legacy svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn-primary-legacy:hover {
+      color: #ffffff;
+      background-color: #13a060;
+      border-color: #204d74;
+    }
+
+    .btn-primary-legacy:active {
+      color: #ffffff;
+      background-color: #286090;
+      border-color: #204d74;
+      box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-primary-legacy:focus,
+    .btn-primary-legacy:focus-visible {
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .btn-primary-legacy:focus:hover,
+    .btn-primary-legacy:focus-visible:hover {
+      color: #ffffff;
+      background-color: #13a060;
+      border-color: #204d74;
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .btn-primary-legacy:focus:active,
+    .btn-primary-legacy:focus-visible:active {
+      color: #ffffff;
+      background-color: #13a060;
+      border-color: #122b40;
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .btn-primary-legacy:active:hover {
+      color: #ffffff;
+      background-color: #204d74;
+      border-color: #122b40;
+      box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-primary-legacy:focus:active:hover,
+    .btn-primary-legacy:focus-visible:active:hover {
+      color: #ffffff;
+      background-color: #13a060;
+      border-color: #122b40;
+      box-shadow: 0px 0px 1px 4px #c8e1ff;
+      outline: 1.4px solid #2188FF;
+      outline-offset: 0px;
+    }
+
+    .btn-primary-legacy:disabled {
+      cursor: not-allowed;
+      box-shadow: none;
+      color: #6B6B6B;
+      background-color: #ededed;
+      border-color: #ededed;
+      opacity: 1;
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+      .banner-text-column {
+        min-width: 320px;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .banner-main-content {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        padding-right: 16px;
+      }
+
+      .banner-text-column {
+        min-width: auto;
+      }
+
+      .banner-action-container,
+      .btn-primary-legacy {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .banner-heading {
+        padding-right: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner-outer-wrapper" id="promoBanner">
+    <div class="banner-card">
+      <button type="button" class="banner-close-btn" id="bannerCloseBtn" aria-label="Close banner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" style="pointer-events: none;">
+          <path d="M0.859883 15.1602C0.455946 15.2763 1.18753 15.3331 1.25912 15.3331C1.40953 15.3331 1.56111 15.2763 1.67717 15.1602L8.00002 8.83737L14.3229 15.1602C14.4377 15.2763 14.5893 15.3331 14.7409 15.3331C14.8925 15.3331 15.0441 15.2763 15.1602 15.1602C15.3911 14.9293 15.3911 14.5539 15.1602 14.3229L8.83737 8.00002L15.1602 1.67717C15.3911 1.4463 15.3911 1.07207 15.1602 0.839948C14.928 0.609015 14.5538 0.609015 14.3229 0.839948L8.00002 7.1628L1.67717 0.839948C1.4524 0.609015 1.07002 0.609015 0.839948 0.839948C0.608954 1.07207 0.628954 1.4463 0.839887 1.67723L7.16274 8.00008L0.839947 14.3229C0.608954 14.5539 0.608954 14.9293 0.839887 15.1602" fill="#000000"/>
+        </svg>
+      </button>
+      <div class="banner-main-content">
+        <div class="banner-leading-section">
+          <div class="banner-text-column">
+            <h2 class="banner-heading">Want To Make This Easier?</h2>
+            <p class="banner-body">Get detailed coverage advice, ways to save, and more.</p>
+          </div>
+        </div>
+        <div class="banner-action-container">
+          <button type="button" class="btn-primary-legacy">
+           
+            <span>Primary button</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const bannerCloseBtn = document.getElementById('bannerCloseBtn');
+    const promoBanner = document.getElementById('promoBanner');
+    if (bannerCloseBtn && promoBanner) {
+      bannerCloseBtn.addEventListener('click', () => {
+        promoBanner.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
