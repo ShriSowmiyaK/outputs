@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy Primary Large Button</title>
+<body>
+    <button type="button" class="primary-button primary-button-large">
+  <svg xmlns="http://www.w3.org/2000/svg"
+       width="24"
+       height="24"
+       viewBox="0 0 24 24"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="2">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </svg>
+  <span>Primary button</span>
+</button>
+
+<style>
+  .primary-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    user-select: none;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 0;
+    font-family: "HCo Gotham", arial, sans-serif;
+    border-radius: 0;
+    font-weight: 500;
+    min-width: 200px;
+    color: #ffffff;
+    background-color: #118654;
+    border-color: #118654;
+  }
+
+  .primary-button-large {
+    padding: 8px 16px 8px 16px;
+    font-size: 20px;
+    line-height: 20.5746px;
+  }
+
+  .primary-button svg {
+    display: block;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+  }
+
+  .primary-button:hover:not(:disabled) {
+    color: #ffffff;
+    background-color: #13a060;
+    border-color: #204d74;
+  }
+
+  .primary-button:active:not(:disabled) {
+    color: #ffffff;
+    background-color: #286090;
+    border-color: #204d74;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .primary-button:focus,
+  .primary-button:focus-visible {
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+  }
+
+  .primary-button:focus:hover:not(:disabled),
+  .primary-button:focus-visible:hover:not(:disabled) {
+    color: #ffffff;
+    background-color: #13a060;
+    border-color: #204d74;
+  }
+
+  .primary-button:focus:active:not(:disabled),
+  .primary-button:focus-visible:active:not(:disabled) {
+    color: #ffffff;
+    background-color: #13a060;
+    border-color: #122b40;
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+  }
+
+  .primary-button:active:hover:not(:disabled) {
+    color: #ffffff;
+    background-color: #204d74;
+    border-color: #122b40;
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .primary-button:focus:active:hover:not(:disabled),
+  .primary-button:focus-visible:active:hover:not(:disabled) {
+    color: #ffffff;
+    background-color: #13a060;
+    border-color: #122b40;
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+  }
+
+  .primary-button:disabled {
+    color: #6B6B6B;
+    background-color: #ededed;
+    border-color: #ededed;
+    opacity: 1;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  @media (max-width: 767px) {
+    .primary-button {
+      width: 100%;
+    }
+  }
+</style>
+</body>
+</html>

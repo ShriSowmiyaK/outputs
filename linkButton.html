@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn-link btn-small" type="button">
+  Link button
+</button>
+
+<style>
+  .btn-link {
+    display: block;
+    text-align: center;
+    user-select: none;
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    margin: 0;
+    font-family: "HCo Gotham", arial, sans-serif;
+    border-radius: 0;
+    font-weight: 500;
+    min-width: 200px;
+    color: #1570be;
+    text-decoration: none;
+  }
+
+  .btn-small {
+    padding: 4.5px 8px 4.5px 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .btn-link:hover {
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+  }
+
+  .btn-link:focus,
+  .btn-link:focus-visible {
+    color: #23527c;
+    text-decoration: underline;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 5px #c8e1ff;
+    outline: 1.6px solid #1570be;
+    outline-offset: 0px;
+  }
+
+  .btn-link:disabled,
+  .btn-link:disabled:hover {
+    color: #6B6B6B;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 767px) {
+    .btn-link {
+      width: 100%;
+    }
+  }
+</style>
+</body>
+</html>

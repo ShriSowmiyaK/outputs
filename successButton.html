@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn btn-success" type="button">
+  Success button
+</button>
+
+<style>
+  .btn {
+    display: block;
+    text-align: center;
+    user-select: none;
+    border: 1px solid;
+    cursor: pointer;
+    margin: 0;
+    font-family: "HCo Gotham", arial, sans-serif;
+    border-radius: 0;
+    font-weight: 500;
+    min-width: 200px;
+    padding: 7px 12px 7px 12px;
+    font-size: 16px;
+    line-height: 1.42857;
+    color: #ffffff;
+    background-color: #107d4e;
+    border-color: #107d4e;
+  }
+
+  .btn-success:hover:not(:disabled) {
+    color: #ffffff;
+    background-color: #0d6432;
+    border-color: #0c5e3b;
+  }
+
+  .btn-success:active:not(:disabled) {
+    color: #ffffff;
+    background-color: #0b5837;
+    border-color: #0a5133;
+    box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.13);
+  }
+
+  .btn-success:focus,
+  .btn-success:focus-visible {
+    box-shadow: 0px 0px 1px 4px #c8e1ff;
+    outline: 1.4px solid #2188FF;
+    outline-offset: 0px;
+  }
+
+  .btn-success:disabled {
+    color: #ffffff;
+    background-color: #107d4e;
+    border-color: #107d4c;
+    opacity: 1;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  @media (max-width: 767px) {
+    .btn {
+      width: 100%;
+    }
+  }
+</style>
+</body>
+</html>
